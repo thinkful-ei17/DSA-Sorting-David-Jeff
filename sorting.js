@@ -129,6 +129,28 @@ function bucketSort(array, high, low) {
   return sortArray;
 }
 
+function bucketSortDupe(array, high, low) {
+  let slotArray = new Array(high - low + 1);
+  let sortArray = [];
+
+  for (let i = 0; i < array.length; i++) {
+    if(slotArray[array[i] - low] === undefined) {
+      slotArray[array[i] - low] = 1;
+    } else {
+      slotArray[array[i] - low]++;
+    }
+  }
+  // console.log(slotArray);
+  for (let i = 0; i < slotArray.length; i++) {
+    if (slotArray[i] !== undefined) {
+      for (let j = 0; j < slotArray[i]; j++) {
+        sortArray.push(i + low);
+      }
+    }
+  }
+  return sortArray;
+}
+
 // console.log(bucketSort(dataSet, 98, 1));
 
 
