@@ -186,46 +186,47 @@ function bucketSortDupe(array, high, low) {
 const booksArray = ['Words of Radiance', 'A Clash of Kings', 'The Two Towers', 'Neuromancer', 'The Goblet of Fire', 'Dune', 'Ready Player One', 'Deadhouse Gates'];
 
 //Do A-Z buckets instead of 0-9
-function sortBooks(array) {
+function sortBooks(array, charLocation=0) {
 
-  for (let i = 0; i < array.length; i++) {
-    
+  for (let i = 0; i < array.length; i++) { 
     array[i] = array[i].toLowerCase().replace(/\s/g, '');
   }
 
-  // console.log(array);
   let slotArray = new Array(27);
   let sortArray = [];
-
-  // console.log(slotArray);
-
-  let low = 97;
-  let high = 122;
+  let ASCIIShift = 97;
 
   for (let i = 0; i < array.length; i++) {
-    if (slotArray[i] === undefined) {
-      slotArray[array[i].charCodeAt(0) - low] = [array[i]];
+    if (slotArray[array[i].charCodeAt(charLocation) - ASCIIShift] === undefined) {
+      slotArray[array[i].charCodeAt(charLocation) - ASCIIShift] = [array[i]];
     }
     else {
-      slotArray[array[i].charCodeAt(0) - low].push(array[i]);
+      slotArray[array[i].charCodeAt(charLocation) - ASCIIShift].push(array[i]);
     }
   }
 
-  console.log(slotArray);
-  // console.log(radixArray);
-}
+  // for (let i = 0; i < slotArray.length; i++) {
+  //   if (slotArray[i].length > 1) {
+  //     for (let j = 0; j < slotArray[i].length; j++) {
 
-sortBooks(booksArray);
-
-
-
-// let radixArray = [];
-  // for (let i = 0; i < array.length; i++) {
-  //   radixArray.push(array[i].charAt(0));
+  //     }
+  //   }
   // }
 
+  console.log(slotArray);
+}
 
-//You can now use mergeSort or quickSort methods.
-   // for (let j = 0; j < array[i].length; j++) {
-      
-    // }
+// sortBooks(booksArray);
+
+function insertSort(array) {
+  for (let i = 0; i < array.length; i++) { 
+    array[i] = array[i].toLowerCase().replace(/\s/g, '');
+  }
+  for (let i = 1; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (array[i] > array[j]) {
+        
+      }
+    }
+  }
+}
