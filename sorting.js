@@ -129,10 +129,23 @@ function bucketSort(array, high, low) {
   return sortArray;
 }
 
-console.log(bucketSort(dataSet, 98, 1));
+// console.log(bucketSort(dataSet, 98, 1));
 
 
 
+//Sort in Place
 
+//loop through our array
+//we have a random variable assigned each loop
+// [4, 3, 10, 5]
+//swap our index with random
+function randomSort(array) {
+  for (let i = 0; i < array.length; i++) {
+    let newArray = [...array.slice(0, i), ...array.slice(i + 1, array.length)];
+    let random = newArray[Math.floor(Math.random() * newArray.length)];
+    swap(array, i, array.indexOf(random));
+  }
+  return array;
+}
 
-
+console.log(randomSort(dataSet));
