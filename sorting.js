@@ -3,7 +3,7 @@
 
 const dataSet = [89, 30, 25, 32, 72, 70, 51, 42, 25,24,53,55,78,50,13,40,48,32,26,2,14,33,45,72,56,44,21,88,27,68,15,62,93,98,73,28,16,46,87,28,65,38,67,16,85,63,23,69,64,91,9,70,81,27,97,82,6,88,3,7,46,13,11,64,76,31,26,38,28,13,17,69,90,1,6,7,64,43,9,73,80,98,46,27,22,87,49,83,6,39,42,51,54,84,34,53,78,40,14,5];
 
-const miniSet = [4, 3, 1, 2];
+const miniSet = [4, 3, 10, 5];
 
 //QuickSort
 
@@ -93,6 +93,7 @@ function merge(left, right, array) {
 
 // console.log(mergeSort(dataSet), 'counter', mergeCounter);
 
+// const miniSet = [4, 3, 1, 2];
 
 
 function swap(array, i, j) {
@@ -103,29 +104,32 @@ function swap(array, i, j) {
 }
 
 //Bucket Sort O(n)
-//const miniSet = [3, 5, 1, 2, 4];  High value: 5, Low value: 1.
 
-//  first swap 1 and 5 with start and end 
-//  [1, 4, 3, 2, 5] 
-
-//Low: 0  0-2 1 bucket, 2-4 bucket, 4-6 bucket, 6-8 bucket, 8-high bucket.
-//High: 10
-
-//Recursive call for each bucket -> is it O(n)?
-
+//Example steps
+//Initial array:[1, 4, 7, 2, 9]
+//1. Set up a new array with 18 slots , # equal start ++ -> end
+//2. Insert true at the index that matches the value from the original array
+//3. [true, true, '', true, '', '', true, '', true];
+//4. Loop through the above array, when true, push that index + 1 into the final array
+//5. Output array: [1, 2, 4, 7 9]
 
 function bucketSort(array, high, low) {
-  let start = array[0];
-  let end = array[array.length -1];
-  // Start at 3, check if it's equal to high, swap with end (4).
-  // If it's equal to low (1), swap with start (3)
+  let slotArray = new Array(high - low + 1);
+  let sortArray = [];
 
-  // for (let i = 0; i < array.length; i++) {
-  //   if (array[i] === high) {
-  //     swap(array, array[i], end);
-  //   }
-  // }
+  for (let i = 0; i < array.length; i++) {
+    slotArray[array[i] - low] = true;
+  }
+
+  for (let i = 0; i < slotArray.length; i++) {
+    if (slotArray[i] === true) {
+      sortArray.push(i + low);
+    }
+  }
+  return sortArray;
 }
+
+console.log(bucketSort(dataSet, 98, 1));
 
 
 
