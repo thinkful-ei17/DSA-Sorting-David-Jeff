@@ -161,13 +161,32 @@ function bucketSortDupe(array, high, low) {
 //we have a random variable assigned each loop
 // [4, 3, 10, 5]
 //swap our index with random
-function randomSort(array) {
+// function randomSort(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     let newArray = [...array.slice(0, i), ...array.slice(i + 1, array.length)];
+//     let random = newArray[Math.floor(Math.random() * newArray.length)];
+//     swap(array, i, array.indexOf(random));
+//   }
+//   return array;
+// }
+
+// console.log(randomSort(dataSet));
+
+
+//Sorting books
+//1. Sorted strings into lowercase + no spaces
+//2. Loop through each string
+
+const booksArray = ['Words of Radiance', 'A Clash of Kings', 'The Two Towers', 'Neuromancer', 'The Goblet of Fire', 'Dune', 'Ready Player One', 'Deadhouse Gates'];
+
+function sortBooks(array) {
+  
   for (let i = 0; i < array.length; i++) {
-    let newArray = [...array.slice(0, i), ...array.slice(i + 1, array.length)];
-    let random = newArray[Math.floor(Math.random() * newArray.length)];
-    swap(array, i, array.indexOf(random));
+    array[i] = array[i].toLowerCase().replace(/\s/g, '');
   }
-  return array;
+
+  //You can now use mergeSort or quickSort methods.
+  mergeSort(array);
 }
 
-console.log(randomSort(dataSet));
+sortBooks(booksArray);
