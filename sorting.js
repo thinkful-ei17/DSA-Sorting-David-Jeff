@@ -177,16 +177,55 @@ function bucketSortDupe(array, high, low) {
 //1. Sorted strings into lowercase + no spaces
 //2. Loop through each string
 
+//Check out Radix, Heap, Insertion, and Selection sort.
+
+//Using Radix sort 
+//1. Iterate over each string, and push string[i] into a new array.
+//2. 
+
 const booksArray = ['Words of Radiance', 'A Clash of Kings', 'The Two Towers', 'Neuromancer', 'The Goblet of Fire', 'Dune', 'Ready Player One', 'Deadhouse Gates'];
 
+//Do A-Z buckets instead of 0-9
 function sortBooks(array) {
 
   for (let i = 0; i < array.length; i++) {
+    
     array[i] = array[i].toLowerCase().replace(/\s/g, '');
   }
 
-  //You can now use mergeSort or quickSort methods.
-  mergeSort(array);
+  // console.log(array);
+  let slotArray = new Array(27);
+  let sortArray = [];
+
+  // console.log(slotArray);
+
+  let low = 97;
+  let high = 122;
+
+  for (let i = 0; i < array.length; i++) {
+    if (slotArray[i] === undefined) {
+      slotArray[array[i].charCodeAt(0) - low] = [array[i]];
+    }
+    else {
+      slotArray[array[i].charCodeAt(0) - low].push(array[i]);
+    }
+  }
+
+  console.log(slotArray);
+  // console.log(radixArray);
 }
 
 sortBooks(booksArray);
+
+
+
+// let radixArray = [];
+  // for (let i = 0; i < array.length; i++) {
+  //   radixArray.push(array[i].charAt(0));
+  // }
+
+
+//You can now use mergeSort or quickSort methods.
+   // for (let j = 0; j < array[i].length; j++) {
+      
+    // }
