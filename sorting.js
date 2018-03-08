@@ -93,3 +93,42 @@ function merge(left, right, array) {
 
 // console.log(mergeSort(dataSet), 'counter', mergeCounter);
 
+
+
+function swap(array, i, j) {
+  quickCounter++;
+  const tmp = array[i];
+  array[i] = array[j];
+  array[j] = tmp;
+}
+
+//Bucket Sort O(n)
+//const miniSet = [3, 5, 1, 2, 4];  High value: 5, Low value: 1.
+
+//  first swap 1 and 5 with start and end 
+//  [1, 4, 3, 2, 5] 
+
+//Low: 0  0-2 1 bucket, 2-4 bucket, 4-6 bucket, 6-8 bucket, 8-high bucket.
+//High: 10
+
+//Recursive call for each bucket -> is it O(n)?
+
+
+function bucketSort(array, high, low) {
+  let start = array[0];
+  let end = array[array.length -1];
+  // Start at 3, check if it's equal to high, swap with end (4).
+  // If it's equal to low (1), swap with start (3)
+
+  // for (let i = 0; i < array.length; i++) {
+  //   if (array[i] === high) {
+  //     swap(array, array[i], end);
+  //   }
+  // }
+}
+
+
+
+
+
+
