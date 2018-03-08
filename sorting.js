@@ -180,7 +180,7 @@ function bucketSortDupe(array, high, low) {
 const booksArray = ['Words of Radiance', 'A Clash of Kings', 'The Two Towers', 'Neuromancer', 'The Goblet of Fire', 'Dune', 'Ready Player One', 'Deadhouse Gates'];
 
 function sortBooks(array) {
-  
+
   for (let i = 0; i < array.length; i++) {
     array[i] = array[i].toLowerCase().replace(/\s/g, '');
   }
