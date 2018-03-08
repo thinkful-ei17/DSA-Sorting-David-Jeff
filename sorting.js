@@ -7,13 +7,17 @@ const miniSet = [4, 3, 1, 2];
 
 //QuickSort
 
+let quickCounter = 0;
+
 function swap(array, i, j) {
+  quickCounter++;
   const tmp = array[i];
   array[i] = array[j];
   array[j] = tmp;
 }
 
 function quickSort(array, start=0, end=array.length) {
+  quickCounter++;
   start = start;
   end = end;
 
@@ -42,9 +46,50 @@ function partition(array, start, end) {
   return j;
 }
 
-console.log(quickSort(dataSet));
+// console.log(quickSort(dataSet), 'counter:', quickCounter);
 
+//MergeSort
 
+let mergeCounter = 0;
 
+function mergeSort(array) {
+  mergeCounter++;
+  if (array.length <= 1) {
+    return array;
+  }
 
+  const middle = Math.floor(array.length / 2);
+  let left = array.slice(0, middle);
+  let right = array.slice(middle, array.length);
+
+  left = mergeSort(left);
+  right = mergeSort(right);
+  return merge(left, right, array);
+}
+
+function merge(left, right, array) {
+  mergeCounter++;
+  let leftIndex = 0;
+  let rightIndex = 0;
+  let outputIndex = 0;
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if(left[leftIndex] < right[rightIndex]) {
+      array[outputIndex++] = left[leftIndex++];
+    }
+    else {
+      array[outputIndex++] = right[rightIndex++];
+    }
+  }
+
+  for (let i=leftIndex; i<left.length; i++) {
+    array[outputIndex++] = left[i];
+  }
+
+  for (let i=rightIndex; i<right.length; i++) {
+    array[outputIndex++] = right[i];
+  }
+  return array;
+}
+
+// console.log(mergeSort(dataSet), 'counter', mergeCounter);
 
